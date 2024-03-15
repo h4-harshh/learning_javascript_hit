@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="background-color: #212121">
+    <!-- 0 UNSENT Client has been created. open() not called yet. 1 OPENED open() has
+    been called. 2 HEADERS_RECEIVED send() has been called, and headers and
+    status are available. 3 LOADING Downloading; responseText holds partial
+    data. 4 DONE The operation is complete. -->
+    <div id="myimage" style="display: flex">My dp</div>
+    <p id="myFollowers">My followers are &nbsp</p>
+  </body>
+  <script>
+    // const requestUrl = "https://api.github.com/users/hiteshchoudhary";
+    // const xhr = new XMLHttpRequest();
+    // xhr.open("GET", requestUrl);
+    // xhr.onreadystatechange = function () {
+    //   console.log(xhr.readyState);
+    //   if (xhr.readyState === 4) {
+    //     const data = JSON.parse(this.responseText);
+    //     console.log(typeof data);
+    //     console.log(data.followers);
+    //     followers = data.followers;
+    //   }
+    // };
+    // xhr.send();
+
+    const requestUrl = "https://api.github.com/users/h4-harshh";
+    const temp = new XMLHttpRequest();
+    temp.open("GET", requestUrl);
+
+    let followers;
+
+    temp.onreadystatechange = function () {
+      console.log(temp.readyState);
+      if (temp.readyState === 4) {
+        const data = JSON.parse(this.responseText);
+        followers = data.followers;
+        console.log(followers);
+        const follower = document.getElementById("myFollowers");
+        // follower.innerHTML = `${followers}`;
+        const addtext = document.createTextNode(followers);
+        follower.append(addtext);
+        follower.style.color = "white";
+
+        const profile = data.avatar_url;
+        const mydp = document.getElementById("myimage");
+        mydp.innerHTML += '<img src="' + profile + '" />';
+        mydp.style.color = "white";
+      }
+    };
+
+    temp.send();
+  </script>
+</html>

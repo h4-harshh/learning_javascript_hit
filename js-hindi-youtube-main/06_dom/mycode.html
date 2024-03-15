@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>nikhi singh dom last lecture</title>
+  </head>
+  <body>
+    <div style="background-color: #212121 color=#fff" ;>
+      <ul class="name">
+        <li>harsh</li>
+      </ul>
+    </div>
+
+    <script>
+      // function for creating a new element
+      function addnewlang(newlang) {
+        const newli = document.createElement("li");
+        const addtext = document.createTextNode(newlang);
+        newli.appendChild(addtext);
+        const sel = document.querySelector(".name");
+        sel.appendChild(newli);
+      }
+      addnewlang("nikhil");
+      addnewlang("nitin");
+      addnewlang("nidhi");
+
+      //remove
+      const lst = document.querySelector("li:last-child");
+      lst.remove();
+
+      //edit
+      const firstname = document.querySelector("li:first-child");
+
+      const newli = document.createElement("li");
+      const newlii = document.createTextNode("sakshi");
+      newli.appendChild(newlii);
+      //   console.log(firstname);
+      firstname.replaceWith(newli);
+
+      //second edit
+    </script>
+  </body>
+</html>
